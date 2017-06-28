@@ -3,12 +3,14 @@
  */
 
 import React, {PropTypes} from 'react';
+import Header from './common/Header';
 
 class App extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <p>JavaScript Ninja</p>
+                <Header/>
+                <p className="text-center">JavaScript Ninja</p>
                 {this.props.children}
             </div>
         );
