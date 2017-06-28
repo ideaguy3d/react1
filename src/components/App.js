@@ -10,7 +10,7 @@ class App extends React.Component {
         return (
             <div className="container-fluid">
                 <Header/>
-                <p className="text-center">JavaScript Ninja</p>
+                <p className="text-center page-header">JavaScript Ninja</p>
                 {this.props.children}
             </div>
         );

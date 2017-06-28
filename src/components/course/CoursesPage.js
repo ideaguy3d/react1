@@ -9,7 +9,9 @@ class CoursesPage extends React.Component {
         super(props, context);
         this.state = {
             course: {title: ""}
-        }
+        };
+        this.onTitleChange = this.onTitleChange.bind(this);
+        this.onClickSave = this.onClickSave.bind(this);
     }
 
     onTitleChange(event) {
