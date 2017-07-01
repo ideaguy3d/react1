@@ -12,3 +12,8 @@ a.active {
 nav {
     padding-top: 20px;
 }
+
+.info-darkgreen {
+    color: darkgreen;
+    font-size: 1.4em;
+}

@@ -5,18 +5,21 @@
 import React, {PropTypes} from 'react';
 
 class Button extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {counter: 0};
-    }
 
     render() {
         return (
-            <div>
-                <button>+1</button>
+            <div style={{display: "inline", marginLeft: 8+"px"}}>
+                <button className="btn btn-default btn-sm"
+                        onClick={() => this.props.onClickFunction(this.props.incrementValue)}>
+                    +{this.props.incrementValue}
+                </button>
             </div>
         );
     }
 }
+
+Button.propTypes = {
+    incrementValue: PropTypes.number.isRequired
+};
 
 export default Button;
