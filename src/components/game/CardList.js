@@ -2,18 +2,20 @@
  * Created by Julius Alvarado on 6/30/2017.
  */
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Card from './Card';
 
-const CardList = function(props){
-    return(
-        <div>
-            <p>List of Data</p>
-            <Card name="Julius Alvarado"
-            avatar_url="https://avatars3.githubusercontent.com/u/14084686?v=3"
-            company="julius3d.com"/>
+const CardList = function (props) {
+    return (
+        <div style={{border: "solid 1px", marginTop: 12}}>
+            {props.cards.map(card => <Card key={card.id} {...card} />)}
         </div>
     );
 };
+
+CardList.propTypes = {
+    cards: PropTypes.array.isRequired
+};
+
 export default CardList;
 

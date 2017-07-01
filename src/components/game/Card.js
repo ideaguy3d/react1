@@ -2,24 +2,30 @@
  * Created by Julius Alvarado on 6/30/2017.
  */
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 const Card = function (props) {
     return (
         <div style={{margin: '1.2em'}}>
-            <img width="120" src="https://avatars3.githubusercontent.com/u/14084686?v=3" alt="avatar"/>
+            <img width="120" src={props.avatar_url} alt="avatar"/>
             <div style={{
                 fontWeight: 'bold',
                 display: 'inline-block',
                 marginLeft: 10
             }}>
-                <h3 className="info-darkgreen">
-                    Julius Alvarado
-                </h3>
-                <h4>Julius3D.com</h4>
+                <div className="info-darkgreen">
+                    {props.name}
+                </div>
+                <div>{props.company}</div>
             </div>
         </div>
     );
+};
+
+Card.propTypes = {
+    avatar_url: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
 };
 
 export default Card;
