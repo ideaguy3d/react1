@@ -17,3 +17,31 @@ nav {
     color: darkgreen;
     font-size: 1.4em;
 }
+
+.glyphicon-star {
+    margin: 0.5em;
+    font-size: 24px;
+}
+
+.number {
+    display: inline-block;
+    margin: 0.5em;
+    background-color: #434343;
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.number.used {
+    background-color: #aaddaa;
+}
+
+.number.selected {
+    background-color: #eeeeee;
+    cursor: not-allowed;
+}

@@ -7,23 +7,20 @@ import Result from './Result';
 import Button from './Button';
 import CardList from './CardList';
 import Form from './Form';
+import Game from './Game';
 
-class Game extends React.Component {
+class GamePage extends React.Component {
     // state = {counter: 0}
     constructor(props) {
         super(props);
         this.state = {
             counter: 0,
-            cards: [
-                {
-                    name: 'foo', company: 'Google',
-                    avatar_url: 'https://avatars3.githubusercontent.com/u/14084686?v=3'
-                },
-                {
-                    name: 'bar', company: 'Facebook',
-                    avatar_url: 'https://avatars3.githubusercontent.com/u/14084686?v=3'
-                }
-            ]
+            cards: [{
+                name: "Julius Alvarado",
+                id: 14084686,
+                avatar_url: "https://avatars3.githubusercontent.com/u/14084686?v=3",
+                company: "julius3d.com"
+            }]
         };
         this.addNewCard = this.addNewCard.bind(this);
         this.incrementCounter = this.incrementCounter.bind(this);
@@ -31,7 +28,9 @@ class Game extends React.Component {
 
     // will act as a prototype function on this class
     incrementCounter(incrementCounter) {
-        this.setState(prevState => ({counter: prevState.counter + incrementCounter}));
+        this.setState(prevState => ({
+            counter: prevState.counter + incrementCounter
+        }));
     }
 
     addNewCard(cardInfo) {
@@ -43,6 +42,8 @@ class Game extends React.Component {
     render() {
         return (
             <div>
+                <Game />
+                <hr/>
                 <Result counter={this.state.counter}/>
                 <Button incrementValue={1} onClickFunction={this.incrementCounter}/>
                 <Button incrementValue={5} onClickFunction={this.incrementCounter}/>
@@ -56,6 +57,6 @@ class Game extends React.Component {
     }
 }
 
-export default Game;
+export default GamePage;
 
 
