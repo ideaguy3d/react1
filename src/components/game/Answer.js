@@ -7,8 +7,9 @@ import React, {PropTypes} from 'react';
 const Answer = function(props){
     return (
         <div className="col-sm-5 col-md-5 col-lg-5">
-            {props.selectedNumbers.map(function(elem, idx){
-                
+            {props.selectedNumbers.map(function(num, idx){
+                return <span className="number" key={idx}
+                             onClick={() => props.unselectNumber(num)}>{num}</span>;
             })}
         </div>
     );
