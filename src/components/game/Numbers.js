@@ -7,6 +7,9 @@ import lodash from 'lodash';
 
 const Numbers = function(props) {
     const numberClassName = function(number){
+        if(props.usedNumbers.indexOf(number) >= 0) {
+            return 'number used';
+        }
         if(props.selectedNumbers.indexOf(number) >= 0) {
             return 'number selected';
         } else return 'number';
