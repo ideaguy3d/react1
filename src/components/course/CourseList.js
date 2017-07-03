@@ -23,7 +23,6 @@ const CourseList = ({courses}) => {
             })}
             </tbody>
         </table>
-
     );
 };
 
