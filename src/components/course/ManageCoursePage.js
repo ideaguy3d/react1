@@ -15,6 +15,7 @@ class ManageCoursePage extends React.Component {
             errors: {}
         };
         this.updateCourseState = this.updateCourseState.bind(this);
+        this.saveCourse = this.saveCourse.bind(this);
     }
 
     updateCourseState(event) {
@@ -24,20 +25,40 @@ class ManageCoursePage extends React.Component {
         return this.setState({course: course});
     }
 
+    saveCourse(event) {
+        event.preventDefault();
+        this.props.actions.saveCourse(this.state.course);
+        this.context.router.push('/courses');
+    }
+
     render() {
         return (
             <CourseForm course={this.state.course} errors={this.state.errors}
                         allAuthors={this.props.authors}
-                        onChange={this.updateCourseState}/>
+                        onChange={this.updateCourseState}
+                        onSave={this.saveCourse}/>
         );
     }
 }
 ManageCoursePage.propTypes = {
     course: PropTypes.object.isRequired,
-    authors: PropTypes.array.isRequired
+    authors: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 };
+ManageCoursePage.contextTypes = {
+    router: PropTypes.object
+};
+function getCourseById(courses, id) {
+    const course = courses.filter(course => course.id === id);
+    if(course.length) return course[0];
+    return null;
+}
 function mapStateToProps(state, ownProps) {
+    const courseId = ownProps.params.id; // "/course/:id"
     let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+    if(courseId) {
+        course = getCourseById(state.courses, courseId);
+    }
     const authorsFormatted = state.authors.map(function (author) {
         return {
             value: author.id,
