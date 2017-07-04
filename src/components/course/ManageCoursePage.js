@@ -17,7 +17,13 @@ class ManageCoursePage extends React.Component {
         this.updateCourseState = this.updateCourseState.bind(this);
         this.saveCourse = this.saveCourse.bind(this);
     }
-
+    // this lifecycle hook function gets called anytime props have changed
+    // or anytime react thinks props have changed.
+    componentWillReceiveProps(nextProps) {
+        if(this.props.course.id !== nextProps.course.id) {
+            this.setState({course: Object.assign({}, nextProps.course)});
+        }
+    }
     updateCourseState(event) {
         const field = event.target.name;
         let course = Object.assign({}, this.state.course);
@@ -50,16 +56,16 @@ ManageCoursePage.contextTypes = {
 };
 function getCourseById(courses, id) {
     const course = courses.filter(course => course.id === id);
-    if(course.length) return course[0];
+    if(course.length) return course[0]; // .filter() returns an array
     return null;
 }
 function mapStateToProps(state, ownProps) {
-    const courseId = ownProps.params.id; // "/course/:id"
+    const courseId = ownProps.params.id; // ".com/course/:id"
     let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-    if(courseId) {
+    if(courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId);
     }
-    const authorsFormatted = state.authors.map(function (author) {
+    const authorsFormattedForDropdown = state.authors.map(function (author) {
         return {
             value: author.id,
             text: author.firstName + " " + author.lastName
@@ -67,7 +73,7 @@ function mapStateToProps(state, ownProps) {
     });
     return {
         course: course,
-        authors: authorsFormatted
+        authors: authorsFormattedForDropdown
     };
 }
 function mapDispatchToProps(dispatch) {

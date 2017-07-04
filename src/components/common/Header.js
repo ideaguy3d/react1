@@ -4,6 +4,7 @@
 
 import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
+import LoadingDots from './LoadingDots';
 
 const Header = () => {
     return (
@@ -15,6 +16,7 @@ const Header = () => {
             <Link to="/courses" activeClassName="active">Skills</Link>
             {" | "}
             <Link to="/game" activeClassName="active">Game</Link>
+            <LoadingDots interval={100} dots={20}/>
         </nav>
     );
 };
