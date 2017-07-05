@@ -12,6 +12,7 @@ import {loadAuthors} from './actions/authorActions';
 // css files for webpack to import
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configStore();
 store.dispatch(loadCourses());
